@@ -1,0 +1,279 @@
+<UserControl
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="WeatherApp.WeatherPageView"
+    x:DataType="app:WeatherPageViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:app="clr-namespace:WeatherApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel VerticalAlignment="Bottom">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel
+                Grid.Column="0"
+                HorizontalAlignment="Right"
+                Margin="0,0,0,20"
+                VerticalAlignment="Bottom">
+                <Image
+                    Height="100"
+                    Opacity="0.05"
+                    Source="Images/humidity.png" />
+                <Label
+                    Content="Humidity"
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    HorizontalAlignment="Center" />
+                <Label
+                    FontSize="10"
+                    FontWeight="Bold"
+                    Foreground="Gray"
+                    HorizontalAlignment="Center"
+                    Name="CurrentHumidityLabel" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
+                <Image
+                    Height="142"
+                    Margin="0,25"
+                    Name="CurrentWeatherImage"
+                    Width="189" />
+                <Label
+                    FontSize="64"
+                    FontWeight="ExtraBold"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    Margin="-5"
+                    Name="CurrentTempLabel" />
+                <Label
+                    FontSize="10"
+                    FontWeight="SemiBold"
+                    Foreground="Gray"
+                    HorizontalAlignment="Center"
+                    Margin="-5"
+                    Name="CurrentWeatherLabel" />
+                <Label
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    Name="CurrentLocationLabel" />
+            </StackPanel>
+            <StackPanel
+                Grid.Column="2"
+                HorizontalAlignment="Right"
+                Margin="20"
+                Opacity="0.5">
+                <Button
+                    Background="Transparent"
+                    Click="GoSetting"
+                    Height="20"
+                    Margin="10,5">
+                    <Image Height="20" Source="Images/settings.png" />
+                </Button>
+                <Button
+                    Background="Transparent"
+                    Click="GoSearch"
+                    Height="20"
+                    Margin="10,5">
+                    <Image Height="20" Source="Images/magnifying-glass.png" />
+                </Button>
+                <Button
+                    Background="Transparent"
+                    Click="SetDefaultCity"
+                    Height="20"
+                    Margin="10,5">
+                    <Image
+                        Height="20"
+                        Name="DefaultSetImage"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <StackPanel
+            HorizontalAlignment="Center"
+            Margin="25"
+            Orientation="Horizontal">
+            <StackPanel Margin="10">
+                <Label
+                    Name="hour1"
+                    FontSize="8"
+                    Foreground="Gray"
+                    HorizontalAlignment="Center">
+                </Label>
+                <Label
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    Margin="5"
+                    Name="Day1" />
+                <Image Height="38" Name="Im1" />
+                <Label
+                    FontSize="12"
+                    FontWeight="SemiBold"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    Margin="5 0 5 5"
+                    Name="TmpDay1" />
+                <Label
+                    FontSize="10"
+                    Foreground="Gray"
+                    HorizontalAlignment="Center"
+                    Margin="-2"
+                    Name="StDay1" />
+                <Label
+                    FontSize="10"
+                    Foreground="Gray"
+                    HorizontalAlignment="Center"
+                    Margin="-2"
+                    Name="HDay1" />
+            </StackPanel>
+            <StackPanel Margin="10">
+                <Label
+                    Name="hour2"
+                    FontSize="8"
+                    Foreground="Gray"
+                    HorizontalAlignment="Center">
+                </Label>
+                <Label
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    Margin="5"
+                    Name="Day2" />
+                <Image Height="38" Name="Im2" />
+                <Label
+                    FontSize="12"
+                    FontWeight="SemiBold"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    Margin="5 0 5 5"
+                    Name="TmpDay2" />
+                <Label
+                    FontSize="10"
+                    Foreground="Gray"
+                    HorizontalAlignment="Center"
+                    Margin="-2"
+                    Name="StDay2" />
+                <Label
+                    FontSize="10"
+                    Foreground="Gray"
+                    HorizontalAlignment="Center"
+                    Margin="-2"
+                    Name="HDay2" />
+            </StackPanel>
+            <StackPanel Margin="10">
+                <Label
+                    Name="hour3"
+                    FontSize="8"
+                    Foreground="Gray"
+                    HorizontalAlignment="Center">
+                </Label>
+                <Label
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    Margin="5"
+                    Name="Day3" />
+                <Image Height="38" Name="Im3" />
+                <Label
+                    FontSize="12"
+                    FontWeight="SemiBold"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    Margin="5 0 5 5"
+                    Name="TmpDay3" />
+                <Label
+                    FontSize="10"
+                    Foreground="Gray"
+                    HorizontalAlignment="Center"
+                    Margin="-2"
+                    Name="StDay3" />
+                <Label
+                    FontSize="10"
+                    Foreground="Gray"
+                    HorizontalAlignment="Center"
+                    Margin="-2"
+                    Name="HDay3" />
+            </StackPanel>
+            <StackPanel Margin="10">
+                <Label
+                    Name="hour4"
+                    FontSize="8"
+                    Foreground="Gray"
+                    HorizontalAlignment="Center">
+                </Label>
+                <Label
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    Margin="5"
+                    Name="Day4" />
+                <Image Height="38" Name="Im4" />
+                <Label
+                    FontSize="12"
+                    FontWeight="SemiBold"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    Margin="5 0 5 5"
+                    Name="TmpDay4" />
+                <Label
+                    FontSize="10"
+                    Foreground="Gray"
+                    HorizontalAlignment="Center"
+                    Margin="-2"
+                    Name="StDay4" />
+                <Label
+                    FontSize="10"
+                    Foreground="Gray"
+                    HorizontalAlignment="Center"
+                    Margin="-2"
+                    Name="HDay4" />
+            </StackPanel>
+            <StackPanel Margin="10">
+                <Label
+                    Name="hour5"
+                    FontSize="8"
+                    Foreground="Gray"
+                    HorizontalAlignment="Center">
+                </Label>
+                <Label
+                    FontSize="12"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    Margin="5 0 5 5"
+                    Name="Day5" />
+                <Image Height="38" Name="Im5" />
+                <Label
+                    FontSize="12"
+                    FontWeight="SemiBold"
+                    Foreground="White"
+                    HorizontalAlignment="Center"
+                    Margin="5"
+                    Name="TmpDay5" />
+                <Label
+                    FontSize="10"
+                    Foreground="Gray"
+                    HorizontalAlignment="Center"
+                    Margin="-2"
+                    Name="StDay5" />
+                <Label
+                    FontSize="10"
+                    Foreground="Gray"
+                    HorizontalAlignment="Center"
+                    Margin="-2"
+                    Name="HDay5" />
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

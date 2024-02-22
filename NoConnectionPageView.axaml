@@ -1,0 +1,42 @@
+<UserControl
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="WeatherApp.NoConnectionPageView"
+    x:DataType="local:NoConnectionPageViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WeatherApp"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Styles>
+        <Style Selector="TextBox /template/ TextBlock#PART_Watermark">
+            <Setter Property="Foreground" Value="DimGray" />
+        </Style>
+        <Style Selector="Label.Res">
+            <Setter Property="Foreground" Value="DimGray" />
+        </Style>
+    </UserControl.Styles>
+    <UserControl.Background>
+        <LinearGradientBrush EndPoint="0%,130%" StartPoint="20%,0%">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="CornflowerBlue" Offset="0" />
+                <GradientStop Color="White" Offset="1" />
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+    </UserControl.Background>
+    <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <Label Content="Ooops !" Foreground="White" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center" Margin="0, 0, 0, 15"></Label>
+                <Label Content="Your connection appears to be off-line" Foreground="White" HorizontalAlignment="Center"></Label>
+                <Label Content="Try to refresh the app" Foreground="White" HorizontalAlignment="Center"></Label>
+                <Border HorizontalAlignment="Center" BorderBrush="CornflowerBlue" BorderThickness="2" Width="100" CornerRadius="30" Margin="0, 20, 0, 0">
+                    <Button Click="Refresh" Content="Refresh" Foreground="CornflowerBlue" Background="Transparent" HorizontalAlignment="Center"/>
+                </Border>
+            </StackPanel>
+            <StackPanel Width="70"></StackPanel>
+            <Image Source="Images/pas-de-connection.png" Height="140"></Image>
+        </StackPanel>
+    </WrapPanel>
+</UserControl>

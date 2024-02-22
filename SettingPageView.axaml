@@ -1,0 +1,430 @@
+<UserControl
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="WeatherApp.SettingPageView"
+    x:DataType="local:SettingPageViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WeatherApp"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Styles>
+        <Style Selector="TextBox /template/ TextBlock#PART_Watermark">
+            <Setter Property="Foreground" Value="DimGray" />
+        </Style>
+        <Style Selector="Label.Res">
+            <Setter Property="Foreground" Value="DimGray" />
+        </Style>
+    </UserControl.Styles>
+    <UserControl.Background>
+        <LinearGradientBrush EndPoint="0%,130%" StartPoint="20%,0%">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="CornflowerBlue" Offset="0" />
+                <GradientStop Color="White" Offset="1" />
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+    </UserControl.Background>
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel
+                Grid.Column="1"
+                HorizontalAlignment="Right"
+                Margin="0,20,15,0"
+                Opacity="0.5"
+                Orientation="Horizontal"
+                VerticalAlignment="Top">
+                <Button
+                    Background="Transparent"
+                    Click="GoSearch"
+                    Height="20"
+                    Margin="5,10">
+                    <Image Height="20" Source="Images/magnifying-glass.png" />
+                </Button>
+                <Button
+                    Background="Transparent"
+                    Click="GoHome"
+                    Height="20"
+                    Margin="5,10">
+                    <Image Height="20" Source="Images/home.png" />
+                </Button>
+            </StackPanel>
+            <StackPanel
+                Grid.Column="0"
+                Margin="0,130,0,0"
+                VerticalAlignment="Center">
+                <Grid Margin="20">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="20">
+                        <Label
+                            Content="Default city :"
+                            FontSize="15"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            Name="defcity" />
+                        <Border
+                            Background="#20ffffff"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Height="90"
+                            Margin="10"
+                            Width="300">
+                            <Grid
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Width="300">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel
+                                    DockPanel.Dock="Left"
+                                    Grid.Column="0"
+                                    Height="90"
+                                    Orientation="Vertical"
+                                    Width="116">
+                                    <StackPanel
+                                        Height="100"
+                                        Margin="0,10,0,0"
+                                        Orientation="Vertical"
+                                        VerticalAlignment="Center">
+                                        <Image Height="35" Name="WeatherImage" />
+                                        <Label
+                                            Classes="Res"
+                                            FontSize="13"
+                                            FontWeight="Bold"
+                                            Foreground="White"
+                                            HorizontalAlignment="Center"
+                                            Margin="0,5,0,-3"
+                                            Name="TempLabel" />
+                                        <Label
+                                            FontSize="8"
+                                            Foreground="Gray"
+                                            HorizontalAlignment="Center"
+                                            Margin="-3"
+                                            Name="DescriptionLabel" />
+                                    </StackPanel>
+                                </StackPanel>
+
+
+                                <StackPanel
+                                    Grid.Column="1"
+                                    Height="90"
+                                    Orientation="Horizontal">
+                                    <StackPanel VerticalAlignment="Center">
+                                        <Label
+                                            Classes="Res"
+                                            FontSize="18"
+                                            FontWeight="Bold"
+                                            Foreground="White"
+                                            Name="CityName" />
+
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel
+                                    Grid.Column="2"
+                                    HorizontalAlignment="Right"
+                                    Margin="10">
+                                    <Button
+                                        Background="Transparent"
+                                        Click="RemoveCity"
+                                        VerticalAlignment="Center">
+                                        <Image Height="8" Source="Images/close.png" />
+                                    </Button>
+                                    <Image
+                                        Height="20"
+                                        Margin="0,0,0,3"
+                                        Opacity="0.2"
+                                        Source="Images/humidity.png" />
+                                    <Label
+                                        Classes="Res"
+                                        FontSize="10"
+                                        Foreground="White"
+                                        HorizontalAlignment="Center"
+                                        Name="HudimityLabel"
+                                        Opacity="20" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="20">
+                        <Label
+                            Content="Language : "
+                            FontSize="15"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            Height="40"
+                            Padding="0,11,0,0" />
+                        <Menu DockPanel.Dock="Top">
+                            <MenuItem Header="{Binding x:DataType=local:SettingsData, Path=language_str}" Name="deflanguage">
+                                <Button Click="SetLanguage" Name="af">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/af.png" />
+                                        <Label Content="Af" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="al">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/al.png" />
+                                        <Label Content="Al" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="ar">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/ar.png" />
+                                        <Label Content="Ar" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="az">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/az.png" />
+                                        <Label Content="Az" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="bg">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/bg.png" />
+                                        <Label Content="Bg" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="ca">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/ca.png" />
+                                        <Label Content="Ca" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="cz">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/cz.png" />
+                                        <Label Content="Cz" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="da">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/da.png" />
+                                        <Label Content="Da" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="de">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/de.png" />
+                                        <Label Content="De" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="el">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/el.png" />
+                                        <Label Content="El" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="en">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/gb-eng.png" />
+                                        <Label Content="Gb-eng" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="eu">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/eu.png" />
+                                        <Label Content="Eu" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="fi">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/fi.png" />
+                                        <Label Content="Fi" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="fr">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/fr.png" />
+                                        <Label Content="Fr" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="gl">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/gl.png" />
+                                        <Label Content="Gl" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="he">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/he.png" />
+                                        <Label Content="He" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="hi">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/hi.png" />
+                                        <Label Content="Hi" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="hr">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/hr.png" />
+                                        <Label Content="Hr" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="hu">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/hu.png" />
+                                        <Label Content="Hu" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="id">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/id.png" />
+                                        <Label Content="Id" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="it">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/it.png" />
+                                        <Label Content="It" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="ja">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/jp.png" />
+                                        <Label Content="Jp" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="kr">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/kr.png" />
+                                        <Label Content="Kr" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="la">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/la.png" />
+                                        <Label Content="La" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="lt">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/lt.png" />
+                                        <Label Content="Lt" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="mk">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/mk.png" />
+                                        <Label Content="Mk" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="no">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/no.png" />
+                                        <Label Content="No" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="nl">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/nl.png" />
+                                        <Label Content="Nl" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="pl">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/pl.png" />
+                                        <Label Content="Pl" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="pt">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/pt.png" />
+                                        <Label Content="Pt" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="pt_br">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/br.png" />
+                                        <Label Content="Pt (br)" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="ro">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/ro.png" />
+                                        <Label Content="Ro" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="ru">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/ru.png" />
+                                        <Label Content="Ru" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="se">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/se.png" />
+                                        <Label Content="Se" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="sk">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/sk.png" />
+                                        <Label Content="Sk" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="th">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/th.png" />
+                                        <Label Content="Th" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="tr">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/tr.png" />
+                                        <Label Content="Tr" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="ua">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/ua.png" />
+                                        <Label Content="Ua" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="vi">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/vi.png" />
+                                        <Label Content="Vi" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="zh_cn">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/cn.png" />
+                                        <Label Content="Zh (Simplified)" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="zh_tw">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/cn.png" />
+                                        <Label Content="Zh (Traditional)" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Click="SetLanguage" Name="zu">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Height="15" Source="Images/Flags/za.png" />
+                                        <Label Content="Zu" />
+                                    </StackPanel>
+                                </Button>
+                            </MenuItem>
+                        </Menu>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</UserControl>
